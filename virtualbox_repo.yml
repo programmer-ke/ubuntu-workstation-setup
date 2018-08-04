@@ -1,7 +1,7 @@
 - name: Add oracle repository
   apt_repository:
     repo: >
-            deb http://download.virtualbox.org/virtualbox/debian
+            deb https://download.virtualbox.org/virtualbox/debian
             trusty contrib non-free
     state: present
     filename: virtualbox
