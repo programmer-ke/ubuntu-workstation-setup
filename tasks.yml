@@ -1,0 +1,58 @@
+---
+- hosts: all
+  tasks:
+    - include_tasks: virtualbox_repo.yml
+    - name: Install Basic Packages
+      apt:
+        name: "{{ item }}"
+        state: latest
+        update_cache: yes
+        autoremove: yes
+        cache_valid_time: 86400
+      with_items:
+        - vlc
+        - git
+        - python-pip
+        - nfs-kernel-server
+        - traceroute
+        - cheese
+        - default-jre
+        - maven
+        - openjdk-7-jdk
+        - libedit-dev
+        - nethogs
+        - redshift
+        - redshift-gtk
+        - xclip
+        - cryptsetup
+        - graphviz
+        - whois
+        - valgrind
+        - clamav-daemon
+        - clamav
+        - rkhunter
+        - tiger
+        - gimp
+        - macchanger
+        - ngrep
+        - lxc
+        - wireshark
+        - python-dev
+        - python3-dev
+        - calibre
+        - emacs
+        - android-tools-adb
+        - chromium-browser
+        - virtualbox-5.2
+
+    - name: Check if vagrant is installed
+      command: dpkg-query -l vagrant
+      register: vagrant_check
+      failed_when: no
+      changed_when: no
+
+    - name: Install vagrant debian package
+      apt:
+        deb: https://releases.hashicorp.com/vagrant/2.1.2/vagrant_2.1.2_x86_64.deb
+      when: vagrant_check.stderr.find("no packages found") != -1
+ 
