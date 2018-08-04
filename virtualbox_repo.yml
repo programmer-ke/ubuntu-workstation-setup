@@ -8,5 +8,5 @@
 
 - name: Add apt key for the repo
   apt_key:
-    url: http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc
+    url: https://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc
     state: present
