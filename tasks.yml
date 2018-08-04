@@ -55,4 +55,28 @@
       apt:
         deb: https://releases.hashicorp.com/vagrant/2.1.2/vagrant_2.1.2_x86_64.deb
       when: vagrant_check.stderr.find("no packages found") != -1
- 
+
+    - name: Upgrade pip
+      pip:
+        name: pip
+        state: latest
+
+    - name: Install general Python deps
+      pip:
+        name: "{{ item }}"
+        state: latest
+      with_items:
+        - virtualenv
+        - flake8
+        - jedi
+        - coverage
+
+    - name: Install ansible python deps
+      pip:
+        name: "{{ item }}"
+        state: latest
+      with_items:
+        - pyyaml
+        - jinja2
+        - passlib
+        - pycrypto
