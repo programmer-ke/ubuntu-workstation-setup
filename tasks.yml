@@ -2,6 +2,7 @@
 - hosts: all
   tasks:
     - include_tasks: virtualbox_repo.yml
+    - include_tasks: emacs_ppa.yml
     - name: Install Basic Packages
       apt:
         name: "{{ item }}"
@@ -40,7 +41,7 @@
         - python-dev
         - python3-dev
         - calibre
-        - emacs
+        - emacs-snapshot
         - android-tools-adb
         - chromium-browser
         - virtualbox-5.2
