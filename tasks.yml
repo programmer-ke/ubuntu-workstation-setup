@@ -1,8 +1,12 @@
 ---
+# Install custom system packages
+# The following will be installed by hand
+# but dependencies may be installed here
+# - Ansible
+# - Emacs
+# - Vagrant
 - hosts: all
   tasks:
-    - include_tasks: virtualbox_repo.yml
-    - include_tasks: emacs_ppa.yml
     - name: Install Basic Packages
       apt:
         name: "{{ item }}"
@@ -17,9 +21,6 @@
         - nfs-kernel-server
         - traceroute
         - cheese
-        - default-jre
-        - maven
-        - openjdk-7-jdk
         - libedit-dev
         - nethogs
         - redshift
@@ -41,26 +42,11 @@
         - python-dev
         - python3-dev
         - calibre
-        - emacs-snapshot
         - android-tools-adb
         - chromium-browser
-        - virtualbox-5.2
-
-    - name: Check if vagrant is installed
-      command: dpkg-query -l vagrant
-      register: vagrant_check
-      failed_when: no
-      changed_when: no
-
-    - name: Install vagrant debian package
-      apt:
-        deb: https://releases.hashicorp.com/vagrant/2.1.2/vagrant_2.1.2_x86_64.deb
-      when: vagrant_check.stderr.find("no packages found") != -1
-
-    - name: Upgrade pip
-      pip:
-        name: pip
-        state: latest
+        - unrar
+        - gparted
+        - virtualbox
 
     - name: Install general Python deps
       pip:
@@ -71,13 +57,3 @@
         - flake8
         - jedi
         - coverage
-
-    - name: Install ansible python deps
-      pip:
-        name: "{{ item }}"
-        state: latest
-      with_items:
-        - pyyaml
-        - jinja2
-        - passlib
-        - pycrypto

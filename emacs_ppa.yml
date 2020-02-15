@@ -1,3 +1,0 @@
-- name: Add the emacs ppa
-  apt_repository:
-    repo: ppa:ubuntu-elisp/ppa
