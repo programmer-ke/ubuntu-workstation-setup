@@ -47,6 +47,7 @@
         - unrar
         - gparted
         - virtualbox
+        - build-essential
 
     - name: Install general Python deps
       pip:
