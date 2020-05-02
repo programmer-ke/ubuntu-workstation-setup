@@ -30,8 +30,6 @@
         - graphviz
         - whois
         - valgrind
-        - clamav-daemon
-        - clamav
         - rkhunter
         - tiger
         - gimp
@@ -58,3 +56,5 @@
         - flake8
         - jedi
         - coverage
+        - nose
+        - requests
