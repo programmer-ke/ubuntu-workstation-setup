@@ -5,15 +5,40 @@
 # - Ansible
 # - Emacs
 # - Vagrant
+
 - hosts: all
   tasks:
+
+    - name: Add tarsnap packaging key
+      apt_key:
+        url: https://pkg.tarsnap.com/tarsnap-deb-packaging-key.asc
+        state: present
+
+    - name: Add tarsnap repository
+      apt_repository:
+        repo: "deb http://pkg.tarsnap.com/deb/{{ ansible_distribution_release }} ./"
+        state: present
+
+    - name: Add brave browser packaging key
+      apt_key:
+        url: https://brave-browser-apt-release.s3.brave.com/brave-core.asc
+        state: present
+
+    - name: Add brave browser repository
+      apt_repository:
+        repo: "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"
+        state: present
+
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+        cache_valid_time: 21600
+
     - name: Install Basic Packages
       apt:
         name: "{{ item }}"
         state: latest
-        update_cache: yes
         autoremove: yes
-        cache_valid_time: 86400
       with_items:
         - vlc
         - git
@@ -42,10 +67,13 @@
         - calibre
         - android-tools-adb
         - chromium-browser
+        - brave-browser
         - unrar
         - gparted
         - virtualbox
         - build-essential
+        - curl
+        - tarsnap
 
     - name: Install general Python deps
       pip:
