@@ -36,53 +36,59 @@
 
     - name: Install Basic Packages
       apt:
-        name: "{{ item }}"
         state: latest
         autoremove: yes
-      with_items:
-        - vlc
-        - git
-        - python-pip
-        - nfs-kernel-server
-        - traceroute
-        - cheese
-        - libedit-dev
-        - nethogs
-        - redshift
-        - redshift-gtk
-        - xclip
-        - cryptsetup
-        - graphviz
-        - whois
-        - valgrind
-        - rkhunter
-        - tiger
-        - gimp
-        - macchanger
-        - ngrep
-        - lxc
-        - wireshark
-        - python-dev
-        - python3-dev
-        - calibre
-        - android-tools-adb
-        - chromium-browser
-        - brave-browser
-        - unrar
-        - gparted
-        - virtualbox
-        - build-essential
-        - curl
-        - tarsnap
+        name:
+          - vlc
+          - git
+          - python-pip
+          - nfs-kernel-server
+          - traceroute
+          - cheese
+          - libedit-dev
+          - nethogs
+          - redshift
+          - redshift-gtk
+          - xclip
+          - cryptsetup
+          - graphviz
+          - whois
+          - valgrind
+          - rkhunter
+          - tiger
+          - gimp
+          - macchanger
+          - ngrep
+          - lxc
+          - wireshark
+          - python-dev
+          - python3-dev
+          - calibre
+          - android-tools-adb
+          - chromium-browser
+          - brave-browser
+          - unrar
+          - gparted
+          - virtualbox
+          - build-essential
+          - curl
+          - tarsnap
+          - kdenlive
+          - blender
 
     - name: Install general Python deps
       pip:
-        name: "{{ item }}"
         state: latest
-      with_items:
-        - virtualenv
-        - flake8
-        - jedi
-        - coverage
-        - nose
-        - requests
+        name:
+          - virtualenv
+          - flake8
+          - jedi
+          - coverage
+          - nose
+          - requests
+
+    - name: Append user to virtualbox group
+      user:
+        name: krm
+        groups: vboxusers
+        append: yes
