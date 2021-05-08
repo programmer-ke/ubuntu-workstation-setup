@@ -75,6 +75,7 @@
           - tarsnap
           - kdenlive
           - blender
+          - obs-studio
 
     - name: Install general Python deps
       pip:
