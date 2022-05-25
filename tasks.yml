@@ -41,7 +41,7 @@
         name:
           - vlc
           - git
-          - python-pip
+          - python3-pip
           - nfs-kernel-server
           - traceroute
           - cheese
@@ -65,7 +65,6 @@
           - python3-dev
           - calibre
           - android-tools-adb
-          - chromium-browser
           - brave-browser
           - unrar
           - gparted
@@ -79,10 +78,11 @@
     - name: Install general Python deps
       pip:
         state: latest
+        executable: pip3
         name:
+          - python-language-server
           - virtualenv
           - flake8
-          - jedi
           - coverage
           - nose
           - requests
