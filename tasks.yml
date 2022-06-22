@@ -92,3 +92,14 @@
         name: krm
         groups: vboxusers
         append: yes
+
+    - name: debug through ansible.env
+      become_user: krm
+      debug: var=ansible_env.HOME
+
+    - name: Install nvm
+      become_user: krm
+      shell: >
+        wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+      args:
+        creates: "/home/krm/.nvm/nvm.sh"
