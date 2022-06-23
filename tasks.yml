@@ -4,7 +4,6 @@
 # but dependencies may be installed here
 # - Ansible
 # - Emacs
-# - Vagrant
 
 - hosts: all
   tasks:
@@ -14,7 +13,7 @@
         url: https://pkg.tarsnap.com/tarsnap-deb-packaging-key.asc
         state: present
 
-    - name: Add tarsnap repository
+    - name: Add tarsnap apt repository
       apt_repository:
         repo: "deb http://pkg.tarsnap.com/deb/{{ ansible_distribution_release }} ./"
         state: present
@@ -24,9 +23,19 @@
         url: https://brave-browser-apt-release.s3.brave.com/brave-core.asc
         state: present
 
-    - name: Add brave browser repository
+    - name: Add brave browser apt repository
       apt_repository:
         repo: "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"
+        state: present
+
+    - name: Add Vagrant packaging key
+      apt_key:
+        url: https://apt.releases.hashicorp.com/gpg
+        state: present
+
+    - name: Add Vagrant apt repository
+      apt_repository:
+        repo: "deb [arch=amd64] https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main"
         state: present
 
     - name: Update apt cache
@@ -39,6 +48,7 @@
         state: latest
         autoremove: yes
         name:
+          - vagrant
           - vlc
           - git
           - python3-pip
@@ -92,10 +102,6 @@
         name: krm
         groups: vboxusers
         append: yes
-
-    - name: debug through ansible.env
-      become_user: krm
-      debug: var=ansible_env.HOME
 
     - name: Install nvm
       become_user: krm
