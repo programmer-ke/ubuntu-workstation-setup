@@ -84,6 +84,7 @@
           - tarsnap
           - kdenlive
           - blender
+          - okular
 
     - name: Install general Python deps
       pip:
