@@ -85,6 +85,7 @@
           - kdenlive
           - blender
           - okular
+          - swaks
 
     - name: Install general Python deps
       pip:
