@@ -51,6 +51,7 @@
           - vagrant
           - vlc
           - git
+          - git-lfs
           - python3-pip
           - nfs-kernel-server
           - traceroute
