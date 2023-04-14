@@ -15,7 +15,7 @@
 
     - name: Add tarsnap apt repository
       apt_repository:
-        repo: "deb http://pkg.tarsnap.com/deb/{{ ansible_distribution_release }} ./"
+        repo: "deb [signed-by=/usr/share/keyrings/tarsnap-archive-keyring.gpg] http://pkg.tarsnap.com/deb/{{ ansible_distribution_release }} ./"
         state: present
 
     - name: Add brave browser packaging key
@@ -25,7 +25,7 @@
 
     - name: Add brave browser apt repository
       apt_repository:
-        repo: "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"
+        repo: "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"
         state: present
 
     - name: Add Vagrant packaging key
@@ -72,8 +72,8 @@
           - ngrep
           - lxc
           - wireshark
-          - python-dev
           - python3-dev
+          - python3-setuptools
           - calibre
           - android-tools-adb
           - brave-browser
@@ -88,17 +88,12 @@
           - okular
           - swaks
 
-    - name: Install general Python deps
+    - name: Install python packages via pip
       pip:
         state: latest
         executable: pip3
         name:
-          - python-language-server
           - virtualenv
-          - flake8
-          - coverage
-          - nose
-          - requests
 
     - name: Append user to virtualbox group
       user:
