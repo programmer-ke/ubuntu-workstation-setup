@@ -87,7 +87,7 @@
           - blender
           - okular
           - swaks
-          - brasero
+          - k3b
 
     - name: Install python packages via pip
       pip:
