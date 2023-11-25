@@ -1,7 +1,6 @@
 ---
 # Install custom system packages
 # The following will be installed by hand
-# but dependencies may be installed here
 # - Ansible
 # - Emacs
 
@@ -36,6 +35,16 @@
     - name: Add Vagrant apt repository
       apt_repository:
         repo: "deb [arch=amd64] https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main"
+        state: present
+
+    - name: Add obs studio packaging key
+      apt_key:
+        keyserver: keyserver.ubuntu.com
+        id: BC7345F522079769F5BBE987EFC71127F425E228
+
+    - name: Add obs studio repository
+      apt_repository:
+        repo: "deb https://ppa.launchpadcontent.net/obsproject/obs-studio/ubuntu {{ ansible_distribution_release }} main"
         state: present
 
     - name: Update apt cache
@@ -81,6 +90,7 @@
           - gparted
           - virtualbox
           - build-essential
+          - python3-venv
           - curl
           - tarsnap
           - kdenlive
@@ -88,6 +98,7 @@
           - okular
           - swaks
           - k3b
+          - obs-studio
 
     - name: Install python packages via pip
       pip:
