@@ -47,6 +47,16 @@
         repo: "deb https://ppa.launchpadcontent.net/obsproject/obs-studio/ubuntu {{ ansible_distribution_release }} main"
         state: present
 
+    - name: Add deadsnakes team packaging key
+      apt_key:
+        keyserver: keyserver.ubuntu.com
+        id: F23C5A6CF475977595C89F51BA6932366A755776
+
+    - name: Add deadsnakes team repository 
+      apt_repository:
+        repo: "deb https://ppa.launchpadcontent.net/deadsnakes/ppa/ubuntu {{ ansible_distribution_release }} main"
+        state: present
+
     - name: Update apt cache
       apt:
         update_cache: yes
@@ -99,6 +109,9 @@
           - swaks
           - k3b
           - obs-studio
+          - python3.10
+          - python3.10-dev
+          - python3.10-venv
 
     - name: Install python packages via pip
       pip:
