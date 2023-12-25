@@ -112,6 +112,9 @@
           - python3.10
           - python3.10-dev
           - python3.10-venv
+          - texlive-latex-base
+          - texlive-latex-extra
+          - vlc-plugin-fluidsynth
 
     - name: Install python packages via pip
       pip:
