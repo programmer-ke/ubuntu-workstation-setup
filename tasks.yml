@@ -57,6 +57,16 @@
         repo: "deb https://ppa.launchpadcontent.net/deadsnakes/ppa/ubuntu {{ ansible_distribution_release }} main"
         state: present
 
+    - name: Add go-ethereum packaging key
+      apt_key:
+        keyserver: keyserver.ubuntu.com
+        id: 2A518C819BE37D2C2031944D1C52189C923F6CA9
+
+    - name: Add go-ethereum team repository
+      apt_repository:
+        repo: "deb https://ppa.launchpadcontent.net/ethereum/ethereum/ubuntu {{ ansible_distribution_release }} main"
+        state: present
+
     - name: Update apt cache
       apt:
         update_cache: yes
@@ -124,6 +134,7 @@
           - texlive-latex-base
           - texlive-latex-extra
           - vlc-plugin-fluidsynth
+          - ethereum
 
     - name: Install python packages via pip
       pip:
