@@ -135,6 +135,7 @@
           - texlive-latex-extra
           - vlc-plugin-fluidsynth
           - ethereum
+          - docker-compose-v2
 
     - name: Install python packages via pip
       pip:
