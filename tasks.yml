@@ -136,6 +136,7 @@
           - vlc-plugin-fluidsynth
           - ethereum
           - docker-compose-v2
+          - kcachegrind
 
     - name: Install python packages via pip
       pip:
