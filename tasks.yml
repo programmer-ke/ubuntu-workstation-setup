@@ -37,6 +37,17 @@
         repo: "deb [arch=amd64] https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main"
         state: present
 
+    - name: Add dbeaver packaging key
+      apt_key:
+        url: https://dbeaver.io/debs/dbeaver.gpg.key
+        keyring: /usr/share/keyrings/dbeaver.gpg.key
+        state: present
+
+    - name: Add dbeaver apt repository
+      apt_repository:
+        repo: "deb [signed-by=/usr/share/keyrings/dbeaver.gpg.key] https://dbeaver.io/debs/dbeaver-ce /"
+        state: present
+
     - name: Add obs studio packaging key
       apt_key:
         keyserver: keyserver.ubuntu.com
@@ -137,6 +148,9 @@
           - ethereum
           - docker-compose-v2
           - kcachegrind
+          - qpdf
+          - libpq-dev
+          - dbeaver-ce
 
     - name: Install python packages via pip
       pip:
