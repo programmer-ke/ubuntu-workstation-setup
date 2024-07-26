@@ -82,10 +82,11 @@
       apt:
         update_cache: yes
         cache_valid_time: 21600
+        upgrade: yes
 
     - name: Install Basic Packages
       apt:
-        state: latest
+        state: present
         autoremove: yes
         name:
           - vagrant
@@ -151,6 +152,7 @@
           - qpdf
           - libpq-dev
           - dbeaver-ce
+          - pencil2d
 
     - name: Install python packages via pip
       pip:
