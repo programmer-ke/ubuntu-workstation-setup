@@ -78,7 +78,7 @@
         repo: "deb https://ppa.launchpadcontent.net/ethereum/ethereum/ubuntu {{ ansible_distribution_release }} main"
         state: present
 
-    - name: Update packages
+    - name: Update apt cache
       apt:
         update_cache: yes
         cache_valid_time: 21600
@@ -153,7 +153,6 @@
           - libpq-dev
           - dbeaver-ce
           - pencil2d
-          - pgadmin3
 
     - name: Install python packages via pip
       pip:
