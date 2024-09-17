@@ -7,6 +7,16 @@
 - hosts: all
   tasks:
 
+    - name: Add opentofu packaging key
+      ansible.builtin.get_url:
+        url: https://packages.opentofu.org/opentofu/tofu/gpgkey
+        dest: /etc/apt/trusted.gpg.d/opentofu.asc
+
+    - name: Add opentofu repository
+      ansible.builtin.apt_repository:
+        repo: "deb [signed-by=/etc/apt/trusted.gpg.d/opentofu.asc] https://packages.opentofu.org/opentofu/tofu/any/ any main"
+        state: present
+
     - name: Add tarsnap packaging key
       apt_key:
         url: https://pkg.tarsnap.com/tarsnap-deb-packaging-key.asc
@@ -153,6 +163,7 @@
           - libpq-dev
           - dbeaver-ce
           - pencil2d
+          - tofu
 
     - name: Install python packages via pip
       pip:
