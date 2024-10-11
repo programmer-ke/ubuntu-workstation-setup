@@ -155,6 +155,9 @@
           - python3.12-venv
           - texlive-latex-base
           - texlive-latex-extra
+          - texlive-xetex
+          - texlive-fonts-recommended
+          - texlive-plain-generic
           - vlc-plugin-fluidsynth
           - ethereum
           - docker-compose-v2
@@ -164,6 +167,7 @@
           - dbeaver-ce
           - pencil2d
           - tofu
+          - pandoc
 
     - name: Install python packages via pip
       pip:
