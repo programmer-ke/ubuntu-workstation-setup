@@ -162,6 +162,7 @@
           - ethereum
           - docker.io
           - docker-compose-v2
+          - docker-buildx
           - kcachegrind
           - qpdf
           - libpq-dev
