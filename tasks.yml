@@ -160,6 +160,7 @@
           - texlive-plain-generic
           - vlc-plugin-fluidsynth
           - ethereum
+          - docker.io
           - docker-compose-v2
           - kcachegrind
           - qpdf
@@ -176,10 +177,12 @@
         name:
           - virtualenv
 
-    - name: Append user to virtualbox group
+    - name: Add user to additional groups
       user:
         name: krm
-        groups: vboxusers
+        groups:
+          - vboxusers
+          - docker
         append: yes
 
     - name: Install nvm
