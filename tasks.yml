@@ -88,6 +88,14 @@
         repo: "deb https://ppa.launchpadcontent.net/ethereum/ethereum/ubuntu {{ ansible_distribution_release }} main"
         state: present
 
+    - name: Install extrepo
+      apt:
+        state: latest
+        name: extrepo
+
+    - name: Enable librewolf
+      shell: extrepo enable librewolf
+
     - name: Update apt cache
       apt:
         update_cache: yes
@@ -171,6 +179,7 @@
           - pencil2d
           - tofu
           - pandoc
+          - librewolf
 
     - name: Install python packages via pip
       pip:
