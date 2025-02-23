@@ -180,6 +180,7 @@
           - tofu
           - pandoc
           - librewolf
+          - htop
 
     - name: Install python packages via pip
       pip:
