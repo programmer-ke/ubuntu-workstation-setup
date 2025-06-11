@@ -150,6 +150,7 @@
           - swaks
           - k3b
           - obs-studio
+          - simplescreenrecorder
           - python3.9
           - python3.9-dev
           - python3.9-venv
