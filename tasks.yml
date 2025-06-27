@@ -183,6 +183,7 @@
           - librewolf
           - htop
           - golang-1.23-go
+          - default-jre
 
     - name: Install python packages via pip
       pip:
