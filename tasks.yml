@@ -184,6 +184,7 @@
           - htop
           - golang-1.23-go
           - default-jre
+          - meson
 
     - name: Install python packages via pip
       pip:
