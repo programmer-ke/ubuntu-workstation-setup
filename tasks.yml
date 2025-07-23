@@ -183,6 +183,7 @@
           - librewolf
           - htop
           - golang-1.23-go
+          - protobuf-compiler
           - default-jre
           - meson
 
