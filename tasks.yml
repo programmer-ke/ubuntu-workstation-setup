@@ -186,6 +186,7 @@
           - protobuf-compiler
           - default-jre
           - meson
+          - jq
 
     - name: Install python packages via pip
       pip:
