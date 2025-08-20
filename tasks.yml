@@ -187,6 +187,8 @@
           - default-jre
           - meson
           - jq
+          - cmake
+          - libtool-bin
 
     - name: Install python packages via pip
       pip:
@@ -203,6 +205,7 @@
           - docker
         append: yes
 
+    # todo: consider using ansible modules for the next following
     - name: Install nvm
       become_user: krm
       shell: >
