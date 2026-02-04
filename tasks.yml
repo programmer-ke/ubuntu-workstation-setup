@@ -200,6 +200,7 @@
           - solc
           - postgresql-client
           - pv
+          - lz4
 
     - name: Install python packages via pip
       pip:
