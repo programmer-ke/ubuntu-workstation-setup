@@ -199,6 +199,7 @@
           - libgccjit-11-dev
           - solc
           - postgresql-client
+          - pv
 
     - name: Install python packages via pip
       pip:
