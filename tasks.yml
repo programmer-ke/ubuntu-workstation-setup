@@ -201,6 +201,9 @@
           - postgresql-client
           - pv
           - lz4
+          - alien
+          - bison
+          - flex
 
     - name: Install python packages via pip
       pip:
