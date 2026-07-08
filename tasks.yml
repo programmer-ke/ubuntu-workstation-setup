@@ -204,6 +204,7 @@
           - alien
           - bison
           - flex
+          - cloc
 
     - name: Install python packages via pip
       pip:
